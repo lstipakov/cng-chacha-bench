@@ -2579,7 +2579,7 @@ $L$oop_tail_avx512::
 	vmovdqu32	ZMMWORD PTR[rsp],zmm16
 
 $L$done_avx512::
-	vzeroall
+	vzeroupper
 	movaps	xmm6,XMMWORD PTR[((-40))+r10]
 	movaps	xmm7,XMMWORD PTR[((-24))+r10]
 	lea	rsp,QWORD PTR[r10]
@@ -2747,7 +2747,7 @@ $L$oop_tail_avx512vl::
 	vmovdqu32	YMMWORD PTR[32+rsp],ymm16
 
 $L$done_avx512vl::
-	vzeroall
+	vzeroupper
 	movaps	xmm6,XMMWORD PTR[((-40))+r10]
 	movaps	xmm7,XMMWORD PTR[((-24))+r10]
 	lea	rsp,QWORD PTR[r10]
