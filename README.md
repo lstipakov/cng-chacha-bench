@@ -17,6 +17,14 @@ it measures anything.
 Three CPUs, single thread pinned to one core, keys and algorithm handles created once and
 reused, buffer resident. Gbit/s.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/throughput-dark.svg">
+  <img alt="Throughput at 1400-byte payloads on three CPUs. CNG ChaCha20-Poly1305 reaches 2.7 to 3.9 Gbit/s, the same algorithm in CRYPTOGAMS assembly 12.3 to 15.8, and CNG AES-256-GCM 26.8 to 43.3." src="charts/throughput-light.svg">
+</picture>
+
+Every bar is one core on one machine. The red bar is the algorithm as the platform ships
+it; the green bar is the same algorithm, same CPU, in portable assembly.
+
 | CPU | payload | CNG AES-256-GCM | CNG ChaCha20-Poly1305 | CRYPTOGAMS ChaCha20-Poly1305 |
 | --- | --- | --- | --- | --- |
 | Core i5-1335U (AVX2) | 1 400 B | 43.3 | **3.9** | 15.0 |
@@ -37,6 +45,11 @@ without our hardware: **Actions -> benchmark -> Run workflow**. The runner pool 
 and AMD, and the output names the CPU it ran on.
 
 ## Why this looks like a missing optimisation rather than call overhead
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/scaling-dark.svg">
+  <img alt="On a Xeon Platinum 8573C, CNG AES-256-GCM rises from 39.9 to 64.1 Gbit/s as the payload grows from 1400 bytes to 64 KB, while CNG ChaCha20-Poly1305 stays at 3.4 to 3.6 Gbit/s." src="charts/scaling-light.svg">
+</picture>
 
 **CNG's ChaCha throughput does not change with payload size.** On the i5 it is 3.9 Gbit/s at
 1 400 bytes and 4.1 Gbit/s at 65 536 bytes — a 47x larger buffer for the same rate — and the
@@ -90,6 +103,10 @@ No dependencies beyond `bcrypt.lib`. Nothing is installed and nothing is written
 Timing is `QueryPerformanceCounter`. The thread is pinned to CPU 0 and run at high priority.
 Keys and algorithm handles are created once, outside the loop — the measurement covers
 `BCryptEncrypt` and the equivalent CRYPTOGAMS calls, nothing else.
+
+## Regenerating the charts
+
+`python make-charts.py` rewrites `charts/*.svg` from the numbers at the top of that file.
 
 ## Licence
 

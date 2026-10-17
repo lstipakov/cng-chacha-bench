@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="351" viewBox="0 0 760 351" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+<rect width="760" height="351" fill="none"/>
+<text x="0" y="18" font-size="14" font-weight="600" fill="#e6edf3">ChaCha20-Poly1305 and AES-256-GCM, 1400-byte payloads</text>
+<text x="0" y="35" font-size="12" fill="#9198a1">Gbit/s, one core. Longer is faster.</text>
+<rect x="0" y="330" width="11" height="11" rx="2" fill="#d1242f"/>
+<text x="17" y="339" font-size="12" fill="#e6edf3">CNG ChaCha20-Poly1305</text>
+<rect x="162" y="330" width="11" height="11" rx="2" fill="#1a7f37"/>
+<text x="179" y="339" font-size="12" fill="#e6edf3">CRYPTOGAMS ChaCha20-Poly1305</text>
+<rect x="370" y="330" width="11" height="11" rx="2" fill="#2f6fd0"/>
+<text x="387" y="339" font-size="12" fill="#e6edf3">CNG AES-256-GCM</text>
+<line x1="186.0" y1="48" x2="186.0" y2="307" stroke="#3d444d" stroke-width="1"/>
+<text x="186.0" y="42" font-size="10" fill="#9198a1" text-anchor="middle">0</text>
+<line x1="272.7" y1="48" x2="272.7" y2="307" stroke="#3d444d" stroke-width="1"/>
+<text x="272.7" y="42" font-size="10" fill="#9198a1" text-anchor="middle">15</text>
+<line x1="359.3" y1="48" x2="359.3" y2="307" stroke="#3d444d" stroke-width="1"/>
+<text x="359.3" y="42" font-size="10" fill="#9198a1" text-anchor="middle">30</text>
+<line x1="446.0" y1="48" x2="446.0" y2="307" stroke="#3d444d" stroke-width="1"/>
+<text x="446.0" y="42" font-size="10" fill="#9198a1" text-anchor="middle">45</text>
+<line x1="532.7" y1="48" x2="532.7" y2="307" stroke="#3d444d" stroke-width="1"/>
+<text x="532.7" y="42" font-size="10" fill="#9198a1" text-anchor="middle">60</text>
+<line x1="619.3" y1="48" x2="619.3" y2="307" stroke="#3d444d" stroke-width="1"/>
+<text x="619.3" y="42" font-size="10" fill="#9198a1" text-anchor="middle">75</text>
+<line x1="706.0" y1="48" x2="706.0" y2="307" stroke="#3d444d" stroke-width="1"/>
+<text x="706.0" y="42" font-size="10" fill="#9198a1" text-anchor="middle">90</text>
+<text x="176" y="77" font-size="12" font-weight="600" fill="#e6edf3" text-anchor="end">Core i5-1335U</text>
+<text x="176" y="92" font-size="10" fill="#9198a1" text-anchor="end">AVX2</text>
+<rect x="186" y="54" width="22.5" height="19" rx="2" fill="#d1242f"/>
+<text x="215.5" y="68" font-size="11" fill="#e6edf3">3.9</text>
+<rect x="186" y="78" width="86.7" height="19" rx="2" fill="#1a7f37"/>
+<text x="279.7" y="92" font-size="11" fill="#e6edf3">15.0</text>
+<rect x="186" y="102" width="250.2" height="19" rx="2" fill="#2f6fd0"/>
+<text x="443.2" y="116" font-size="11" fill="#e6edf3">43.3</text>
+<text x="176" y="170" font-size="12" font-weight="600" fill="#e6edf3" text-anchor="end">EPYC 7763</text>
+<text x="176" y="185" font-size="10" fill="#9198a1" text-anchor="end">AVX2</text>
+<rect x="186" y="147" width="15.6" height="19" rx="2" fill="#d1242f"/>
+<text x="208.6" y="161" font-size="11" fill="#e6edf3">2.7</text>
+<rect x="186" y="171" width="71.1" height="19" rx="2" fill="#1a7f37"/>
+<text x="264.1" y="185" font-size="11" fill="#e6edf3">12.3</text>
+<rect x="186" y="195" width="154.8" height="19" rx="2" fill="#2f6fd0"/>
+<text x="347.8" y="209" font-size="11" fill="#e6edf3">26.8</text>
+<text x="176" y="263" font-size="12" font-weight="600" fill="#e6edf3" text-anchor="end">Xeon Platinum 8573C</text>
+<text x="176" y="278" font-size="10" fill="#9198a1" text-anchor="end">AVX-512</text>
+<rect x="186" y="240" width="19.6" height="19" rx="2" fill="#d1242f"/>
+<text x="212.6" y="254" font-size="11" fill="#e6edf3">3.4</text>
+<rect x="186" y="264" width="91.3" height="19" rx="2" fill="#1a7f37"/>
+<text x="284.3" y="278" font-size="11" fill="#e6edf3">15.8</text>
+<rect x="186" y="288" width="230.5" height="19" rx="2" fill="#2f6fd0"/>
+<text x="423.5" y="302" font-size="11" fill="#e6edf3">39.9</text>
+</svg>

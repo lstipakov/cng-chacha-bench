@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="290" viewBox="0 0 760 290" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+<rect width="760" height="290" fill="none"/>
+<text x="0" y="18" font-size="14" font-weight="600" fill="#1f2328">The same provider, the same core, three payload sizes</text>
+<text x="0" y="35" font-size="12" fill="#656d76">Xeon Platinum 8573C. Gbit/s. A 47x larger buffer leaves ChaCha where it started.</text>
+<rect x="0" y="269" width="11" height="11" rx="2" fill="#d1242f"/>
+<text x="17" y="278" font-size="12" fill="#1f2328">CNG ChaCha20-Poly1305</text>
+<rect x="162" y="269" width="11" height="11" rx="2" fill="#2f6fd0"/>
+<text x="179" y="278" font-size="12" fill="#1f2328">CNG AES-256-GCM</text>
+<text x="74" y="81" font-size="12" fill="#1f2328" text-anchor="end">1 400 B</text>
+<rect x="84" y="54" width="25.5" height="21" rx="2" fill="#d1242f"/>
+<text x="116.5" y="69" font-size="11" fill="#1f2328">3.4 <tspan fill="#656d76">ChaCha</tspan></text>
+<rect x="84" y="81" width="299.8" height="21" rx="2" fill="#2f6fd0"/>
+<text x="390.8" y="96" font-size="11" fill="#1f2328">39.9 <tspan fill="#656d76">AES</tspan></text>
+<text x="74" y="153" font-size="12" fill="#1f2328" text-anchor="end">8 192 B</text>
+<rect x="84" y="126" width="27.1" height="21" rx="2" fill="#d1242f"/>
+<text x="118.1" y="141" font-size="11" fill="#1f2328">3.6 <tspan fill="#656d76">ChaCha</tspan></text>
+<rect x="84" y="153" width="442.6" height="21" rx="2" fill="#2f6fd0"/>
+<text x="533.6" y="168" font-size="11" fill="#1f2328">58.9 <tspan fill="#656d76">AES</tspan></text>
+<text x="74" y="225" font-size="12" fill="#1f2328" text-anchor="end">65 536 B</text>
+<rect x="84" y="198" width="27.1" height="21" rx="2" fill="#d1242f"/>
+<text x="118.1" y="213" font-size="11" fill="#1f2328">3.6 <tspan fill="#656d76">ChaCha</tspan></text>
+<rect x="84" y="225" width="481.7" height="21" rx="2" fill="#2f6fd0"/>
+<text x="572.7" y="240" font-size="11" fill="#1f2328">64.1 <tspan fill="#656d76">AES</tspan></text>
+</svg>
