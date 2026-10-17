@@ -1,0 +1,35 @@
+name: benchmark
+
+# Anyone can re-run this and read the numbers: Actions -> benchmark -> Run workflow.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  bench:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and run
+        shell: cmd
+        run: |
+          for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do set VS=%%i
+          call "%VS%\VC\Auxiliary\Build\vcvars64.bat" >nul
+          call build.cmd || exit /b 1
+          bench.exe > result.txt 2>&1 || exit /b 1
+          type result.txt
+
+      - name: Publish to the job summary
+        shell: cmd
+        run: |
+          echo ```> summary.md
+          type result.txt >> summary.md
+          echo ```>> summary.md
+          type summary.md >> "%GITHUB_STEP_SUMMARY%"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-output
+          path: result.txt
