@@ -14,25 +14,35 @@ it measures anything.
 
 ## Result
 
-13th Gen Intel Core i5-1335U, AVX2, no AVX-512. Single thread pinned to one core, keys and
-algorithm handles created once and reused, buffer resident:
+Three CPUs, single thread pinned to one core, keys and algorithm handles created once and
+reused, buffer resident. Gbit/s.
 
-| payload | CNG AES-256-GCM | CNG ChaCha20-Poly1305 | CRYPTOGAMS ChaCha20-Poly1305 |
-| --- | --- | --- | --- |
-| 1 400 B | 40.80 Gbit/s | **3.89 Gbit/s** | 15.28 Gbit/s |
-| 8 192 B | 73.66 Gbit/s | **4.16 Gbit/s** | 19.85 Gbit/s |
-| 65 536 B | 79.78 Gbit/s | **4.03 Gbit/s** | 20.86 Gbit/s |
+| CPU | payload | CNG AES-256-GCM | CNG ChaCha20-Poly1305 | CRYPTOGAMS ChaCha20-Poly1305 |
+| --- | --- | --- | --- | --- |
+| Core i5-1335U (AVX2) | 1 400 B | 43.3 | **3.9** | 15.0 |
+| | 8 192 B | 76.8 | **4.0** | 20.4 |
+| | 65 536 B | 82.8 | **4.1** | 20.5 |
+| EPYC 7763 (AVX2) | 1 400 B | 26.8 | **2.7** | 12.3 |
+| | 8 192 B | 42.0 | **2.9** | 16.9 |
+| | 65 536 B | 45.3 | **2.9** | 17.6 |
+| Xeon Platinum 8573C (AVX-512) | 1 400 B | 39.9 | **3.4** | 15.8 |
+| | 8 192 B | 58.9 | **3.6** | 26.6 |
+| | 65 536 B | 64.1 | **3.6** | 28.7 |
 
-So on this CPU, CNG's ChaCha20-Poly1305 is **3.9x to 5.2x slower than the same algorithm in
+On every one of them CNG's ChaCha20-Poly1305 is **4.6x to 8.0x slower than the same AEAD in
 portable assembly**, and **10x to 20x slower than AES-GCM on the same provider**.
+
+The two cloud CPUs are GitHub-hosted Actions runners, so the numbers can be reproduced
+without our hardware: **Actions -> benchmark -> Run workflow**. The runner pool mixes Intel
+and AMD, and the output names the CPU it ran on.
 
 ## Why this looks like a missing optimisation rather than call overhead
 
-**CNG's ChaCha throughput does not change with payload size.** It is 3.89 Gbit/s at 1 400
-bytes and 4.03 Gbit/s at 65 536 bytes — a 47x larger buffer for the same rate. Per-call
-overhead would amortise away across that range, and for AES-GCM on the same provider it
-plainly does: 40.8 Gbit/s at 1 400 bytes rising to 79.8 Gbit/s at 64 KB. ChaCha stays flat,
-which is the signature of a per-byte cost, not a fixed one.
+**CNG's ChaCha throughput does not change with payload size.** On the i5 it is 3.9 Gbit/s at
+1 400 bytes and 4.1 Gbit/s at 65 536 bytes — a 47x larger buffer for the same rate — and the
+other two CPUs behave identically. Per-call overhead would amortise away across that range,
+and for AES-GCM on the same provider it plainly does, rising from 43 to 83 Gbit/s on the
+same machine. ChaCha stays flat, which is the signature of a per-byte cost, not a fixed one.
 
 The CRYPTOGAMS figures on the same CPU show the per-byte cost is not inherent to the
 algorithm. That implementation uses AVX2 to run several ChaCha blocks in parallel and a
